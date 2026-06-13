@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Suriya Gugagantha</title>
+  <style>
+    :root {
+      --bg: #0a0a0f;
+      --surface: #111118;
+      --border: #22222e;
+      --accent: #7c6af7;
+      --accent2: #a78bfa;
+      --text: #eeeef5;
+      --muted: #7777aa;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    /* ─── HERO ─── */
+    #hero {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 70% 55% at 50% -5%, rgba(124,106,247,0.22) 0%, transparent 65%),
+        radial-gradient(ellipse 40% 30% at 85% 85%, rgba(167,139,250,0.08) 0%, transparent 55%);
+      pointer-events: none;
+    }
+
+    .hero-inner { position: relative; }
+
+    .hero-eyebrow {
+      font-size: 0.75rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent2);
+      margin-bottom: 1.2rem;
+      font-weight: 500;
+    }
+
+    h1 {
+      font-size: clamp(3rem, 9vw, 6.5rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.0;
+      margin-bottom: 1.2rem;
+    }
+
+    h1 .last { color: var(--accent2); }
+
+    .hero-desc {
+      color: var(--muted);
+      font-size: clamp(0.95rem, 2vw, 1.1rem);
+      max-width: 480px;
+      margin: 0 auto 2.5rem;
+    }
+
+    /* contact row in hero */
+    .contact-row {
+      display: flex;
+      gap: 0.75rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.55rem 1.1rem;
+      border-radius: 99px;
+      font-size: 0.83rem;
+      font-weight: 500;
+      text-decoration: none;
+      border: 1px solid var(--border);
+      color: var(--text);
+      background: var(--surface);
+      transition: border-color 0.2s, color 0.2s, transform 0.15s;
+    }
+    .chip:hover { border-color: var(--accent2); color: var(--accent2); transform: translateY(-2px); }
+    .chip svg { flex-shrink: 0; }
+
+    .scroll-hint {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.4rem;
+      color: var(--muted);
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      opacity: 0.6;
+      animation: bob 2s ease-in-out infinite;
+    }
+    @keyframes bob { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(5px)} }
+
+    /* ─── SECTIONS ─── */
+    .section {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 5rem 2rem;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+    }
+
+    h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+
+    .section-link {
+      margin-left: auto;
+      font-size: 0.8rem;
+      color: var(--accent2);
+      text-decoration: none;
+      opacity: 0.8;
+    }
+    .section-link:hover { opacity: 1; }
+
+    /* ─── PROJECT CARDS ─── */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1rem;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.3rem 1.4rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      text-decoration: none;
+      color: inherit;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .card:hover { border-color: var(--accent); transform: translateY(-3px); }
+
+    .card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .card-icon { font-size: 1.3rem; }
+
+    .card-arrow {
+      font-size: 0.9rem;
+      color: var(--muted);
+      transition: color 0.2s;
+    }
+    .card:hover .card-arrow { color: var(--accent2); }
+
+    .card-name {
+      font-weight: 700;
+      font-size: 0.97rem;
+    }
+
+    .card-desc {
+      font-size: 0.83rem;
+      color: var(--muted);
+      flex: 1;
+    }
+
+    .card-meta {
+      font-size: 0.75rem;
+      color: var(--muted);
+      opacity: 0.7;
+    }
+
+    .lang-dot {
+      display: inline-block;
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      margin-right: 4px;
+      vertical-align: middle;
+    }
+
+    /* ─── WEBSITES ─── */
+    .site-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.3rem 1.6rem;
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      text-decoration: none;
+      color: inherit;
+      transition: border-color 0.2s, transform 0.2s;
+      margin-bottom: 0.85rem;
+    }
+    .site-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+
+    .site-thumb {
+      width: 48px; height: 48px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, #7c6af7 0%, #a78bfa 100%);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem;
+      flex-shrink: 0;
+    }
+
+    .site-info { flex: 1; }
+    .site-name { font-weight: 700; font-size: 0.97rem; margin-bottom: 0.15rem; }
+    .site-url { font-size: 0.78rem; color: var(--accent2); opacity: 0.8; }
+
+    .site-badge {
+      font-size: 0.72rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 99px;
+      border: 1px solid var(--border);
+      color: var(--muted);
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      text-align: center;
+      padding: 2rem;
+      color: var(--muted);
+      font-size: 0.78rem;
+      border-top: 1px solid var(--border);
+    }
+
+    @media (max-width: 600px) {
+      .cards { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══ HERO ═══ -->
+<section id="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Princeton University · Mathematics · Class of 2028</div>
+    <h1>Suriya<br><span class="last">Gugagantha</span></h1>
+    <p class="hero-desc">
+      Mathematician, AI researcher, and builder. Working across quantum information theory, data engineering, and machine learning.
+    </p>
+
+    <div class="contact-row">
+      <!-- Email -->
+      <a class="chip" href="mailto:suriya@princeton.edu">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+        suriya@princeton.edu
+      </a>
+      <!-- Phone -->
+      <a class="chip" href="tel:7184144683">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.16 12 19.79 19.79 0 0 1 1.1 3.44a2 2 0 0 1 1.99-2h3a2 2 0 0 1 2 1.72c.12.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L7.09 9.91a16 16 0 0 0 5.91 5.91l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.58 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        718-414-4683
+      </a>
+      <!-- LinkedIn -->
+      <a class="chip" href="https://www.linkedin.com/in/suriya-gugagantha-b937aa2b8/" target="_blank" rel="noopener">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        LinkedIn
+      </a>
+      <!-- GitHub -->
+      <a class="chip" href="https://github.com/Suriyalgo" target="_blank" rel="noopener">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+        GitHub
+      </a>
+    </div>
+  </div>
+
+  <div class="scroll-hint">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+    scroll
+  </div>
+</section>
+
+<!-- ═══ RECENT PROJECTS ═══ -->
+<section class="section" id="projects">
+  <div class="section-header">
+    <h2>Recent Projects</h2>
+    <a class="section-link" href="https://github.com/Suriyalgo" target="_blank" rel="noopener">View all on GitHub ↗</a>
+  </div>
+
+  <div class="cards">
+
+    <a class="card" href="https://github.com/Suriyalgo/mta-project" target="_blank" rel="noopener">
+      <div class="card-top">
+        <span class="card-icon">🚇</span>
+        <span class="card-arrow">↗</span>
+      </div>
+      <div class="card-name">MTA Subway Ridership Pipeline</div>
+      <div class="card-desc">Ingested and aggregated ~7 GB of historical MTA ridership data into a PostgreSQL database with a full Airflow + Docker pipeline.</div>
+      <div class="card-meta">
+        <span class="lang-dot" style="background:#3572A5"></span>Python · SQL · Docker · Airflow
+      </div>
+    </a>
+
+    <a class="card" href="https://github.com/Suriyalgo/PrincetonChessClub" target="_blank" rel="noopener">
+      <div class="card-top">
+        <span class="card-icon">♟️</span>
+        <span class="card-arrow">↗</span>
+      </div>
+      <div class="card-name">Princeton Chess Club Website</div>
+      <div class="card-desc">Official website for the Princeton Chess Club, built from scratch.</div>
+      <div class="card-meta">
+        <span class="lang-dot" style="background:#e34c26"></span>HTML · CSS · JavaScript
+      </div>
+    </a>
+
+    <a class="card" href="#" target="_blank" rel="noopener">
+      <div class="card-top">
+        <span class="card-icon">🌐</span>
+        <span class="card-arrow">↗</span>
+      </div>
+      <div class="card-name">Vertex Browser</div>
+      <div class="card-desc">Hackathon project built at Hack Princeton 2026. See the Devpost page for details.</div>
+      <div class="card-meta">Hack Princeton 2026 · Nov. 2025</div>
+    </a>
+
+  </div>
+</section>
+
+<!-- ═══ WEBSITES ═══ -->
+<section class="section" id="websites">
+  <div class="section-header">
+    <h2>Websites I've Built</h2>
+  </div>
+
+  <a class="site-card" href="https://github.com/Suriyalgo/PrincetonChessClub" target="_blank" rel="noopener">
+    <div class="site-thumb">♟️</div>
+    <div class="site-info">
+      <div class="site-name">Princeton Chess Club</div>
+      <div class="site-url">github.com/Suriyalgo/PrincetonChessClub</div>
+    </div>
+    <span class="site-badge">HTML / CSS / JS</span>
+  </a>
+
+  <a class="site-card" href="https://github.com/Suriyalgo" target="_blank" rel="noopener">
+    <div class="site-thumb">🧑‍💻</div>
+    <div class="site-info">
+      <div class="site-name">This Website</div>
+      <div class="site-url">suriya gugagantha · personal site</div>
+    </div>
+    <span class="site-badge">HTML / CSS / JS</span>
+  </a>
+
+</section>
+
+<footer>
+  © 2026 Suriya Gugagantha &nbsp;·&nbsp; Princeton University &nbsp;·&nbsp;
+  <a href="https://github.com/Suriyalgo" style="color:var(--accent2);text-decoration:none">GitHub</a>
+</footer>
+
+</body>
+</html>
