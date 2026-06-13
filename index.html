@@ -34,7 +34,6 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      text-align: center;
       padding: 2rem;
       position: relative;
       overflow: hidden;
@@ -50,13 +49,29 @@
       pointer-events: none;
     }
 
-    .hero-inner { position: relative; }
+    .hero-inner {
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 4rem;
+      text-align: left;
+      max-width: 860px;
+      width: 100%;
+    }
+
+    .hero-left { flex: 1; }
+
+    .hero-right {
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+      flex-shrink: 0;
+    }
 
     .hero-eyebrow {
-      font-size: 0.75rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--accent2);
+      font-size: 1.1rem;
+      letter-spacing: 0.01em;
+      color: var(--muted);
       margin-bottom: 1.2rem;
       font-weight: 500;
     }
@@ -78,12 +93,11 @@
       margin: 0 auto 2.5rem;
     }
 
-    /* contact row in hero */
+    /* contact row in hero — now a column on the right */
     .contact-row {
       display: flex;
-      gap: 0.75rem;
-      justify-content: center;
-      flex-wrap: wrap;
+      flex-direction: column;
+      gap: 0.65rem;
     }
 
     .chip {
@@ -269,39 +283,39 @@
 <!-- ═══ HERO ═══ -->
 <section id="hero">
   <div class="hero-inner">
-    <div class="hero-eyebrow">Princeton University · Mathematics · Class of 2028</div>
-    <h1>Suriya<br><span class="last">Gugagantha</span></h1>
-    <p class="hero-desc">
-      Mathematician, AI researcher, and builder. Working across quantum information theory, data engineering, and machine learning.
-    </p>
-
-    <div class="contact-row">
-      <!-- Email -->
-      <a class="chip" href="mailto:suriya@princeton.edu">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-        suriya@princeton.edu
-      </a>
-      <!-- Phone -->
-      <a class="chip" href="tel:7184144683">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.16 12 19.79 19.79 0 0 1 1.1 3.44a2 2 0 0 1 1.99-2h3a2 2 0 0 1 2 1.72c.12.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L7.09 9.91a16 16 0 0 0 5.91 5.91l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.58 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-        718-414-4683
-      </a>
-      <!-- LinkedIn -->
-      <a class="chip" href="https://www.linkedin.com/in/suriya-gugagantha-b937aa2b8/" target="_blank" rel="noopener">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-        LinkedIn
-      </a>
-      <!-- GitHub -->
-      <a class="chip" href="https://github.com/Suriyalgo" target="_blank" rel="noopener">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
-        GitHub
-      </a>
+    <div class="hero-left">
+      <h1>Suriya<br><span class="last">Gugagantha</span></h1>
+      <div class="hero-eyebrow">Princeton University · Mathematics · 2028</div>
+      <p class="hero-desc">
+        Avid mathematician, AI researcher, and builder. Actively interested in
+        quantum information theory, data engineering, and machine learning.
+      </p>
     </div>
-  </div>
 
-  <div class="scroll-hint">
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
-    scroll
+    <div class="hero-right">
+      <div class="contact-row">
+        <!-- Email -->
+        <a class="chip" href="mailto:suriya@princeton.edu">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+          suriya@princeton.edu
+        </a>
+        <!-- Phone -->
+        <a class="chip" href="tel:7184144683">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.16 12 19.79 19.79 0 0 1 1.1 3.44a2 2 0 0 1 1.99-2h3a2 2 0 0 1 2 1.72c.12.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L7.09 9.91a16 16 0 0 0 5.91 5.91l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.58 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          718-414-4683
+        </a>
+        <!-- LinkedIn -->
+        <a class="chip" href="https://www.linkedin.com/in/suriya-gugagantha-b937aa2b8/" target="_blank" rel="noopener">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          LinkedIn
+        </a>
+        <!-- GitHub -->
+        <a class="chip" href="https://github.com/Suriyalgo" target="_blank" rel="noopener">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+          GitHub
+        </a>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -314,17 +328,16 @@
 
   <div class="cards">
 
-    <a class="card" href="https://github.com/Suriyalgo/mta-project" target="_blank" rel="noopener">
+    <div class="card">
       <div class="card-top">
         <span class="card-icon">🚇</span>
-        <span class="card-arrow">↗</span>
       </div>
       <div class="card-name">MTA Subway Ridership Pipeline</div>
       <div class="card-desc">Ingested and aggregated ~7 GB of historical MTA ridership data into a PostgreSQL database with a full Airflow + Docker pipeline.</div>
       <div class="card-meta">
         <span class="lang-dot" style="background:#3572A5"></span>Python · SQL · Docker · Airflow
       </div>
-    </a>
+    </div>
 
     <a class="card" href="https://github.com/Suriyalgo/PrincetonChessClub" target="_blank" rel="noopener">
       <div class="card-top">
@@ -351,31 +364,6 @@
   </div>
 </section>
 
-<!-- ═══ WEBSITES ═══ -->
-<section class="section" id="websites">
-  <div class="section-header">
-    <h2>Websites I've Built</h2>
-  </div>
-
-  <a class="site-card" href="https://github.com/Suriyalgo/PrincetonChessClub" target="_blank" rel="noopener">
-    <div class="site-thumb">♟️</div>
-    <div class="site-info">
-      <div class="site-name">Princeton Chess Club</div>
-      <div class="site-url">github.com/Suriyalgo/PrincetonChessClub</div>
-    </div>
-    <span class="site-badge">HTML / CSS / JS</span>
-  </a>
-
-  <a class="site-card" href="https://github.com/Suriyalgo" target="_blank" rel="noopener">
-    <div class="site-thumb">🧑‍💻</div>
-    <div class="site-info">
-      <div class="site-name">This Website</div>
-      <div class="site-url">suriya gugagantha · personal site</div>
-    </div>
-    <span class="site-badge">HTML / CSS / JS</span>
-  </a>
-
-</section>
 
 <footer>
   © 2026 Suriya Gugagantha &nbsp;·&nbsp; Princeton University &nbsp;·&nbsp;
